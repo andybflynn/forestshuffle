@@ -23,9 +23,9 @@ export default {
     filteredCards() {
       let res = this.cards
       if (!useGameStore().alpineExpansion)
-        res = res.filter(c => c.symbols.indexOf('alps') < 0)
+        res = res.filter(c => (c.hide || c.symbols.indexOf('alps') < 0))
       if (!useGameStore().woodlandEdgeExpansion)
-        res = res.filter(c => (c.symbols.indexOf('woodlandEdge') < 0))
+        res = res.filter(c => (c.hide || c.symbols.indexOf('woodlandEdge') < 0))
       return res
     }
   }

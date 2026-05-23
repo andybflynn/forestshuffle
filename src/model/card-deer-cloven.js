@@ -199,7 +199,29 @@ export const europeanBison = {
     name: 'europeanBison',
     position: 'side',
     symbols: ['clovenHoofedAnimal', 'woodlandEdge'],
-    hide: (gameStore) => !gameStore.woodlandEdgeExpansion && !gameStore.explorationExpansion,
+    hide: (gameStore) => !gameStore.woodlandEdgeExpansion,
+    params: [{
+        name: 'beechCount',
+        type: 'type',
+        symbol: 'beech',
+        value: 0,
+        unrestricted: true
+    }, {
+        name: 'oakCount',
+        type: 'type',
+        symbol: 'oak',
+        value: 0,
+        unrestricted: true
+    }],
+    recalculatePoints(forest) {
+        this.points = 2 * this.count * (forest.beechCount + forest.oakCount)
+    }
+}
+export const bison = {
+    name: 'bison',
+    position: 'side',
+    symbols: ['clovenHoofedAnimal', 'woodlandEdge'],
+    hide: (gameStore) => !gameStore.explorationExpansion,
     params: [{
         name: 'beechCount',
         type: 'type',
@@ -249,4 +271,4 @@ export const elk = {
 }
 
 
-export const allDeers = [fallowDeer, redDeer, roeDeerBeech, roeDeerLinden, roeDeerSilverFir, roeDeerHorseChestnut, roeDeerBirch, squeaker, squeakerWE, wildBoar, wildBoarFemale, chamoisDouglasFir, chamoisEuropeanLarch, chamoisStonePine, steinbock, europeanBison, elk]
+export const allDeers = [fallowDeer, redDeer, roeDeerBeech, roeDeerLinden, roeDeerSilverFir, roeDeerHorseChestnut, roeDeerBirch, squeaker, squeakerWE, wildBoar, wildBoarFemale, chamoisDouglasFir, chamoisEuropeanLarch, chamoisStonePine, steinbock, europeanBison, bison, elk]
